@@ -1,216 +1,29 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-    line-height: 1.6;
-}
+/* ... 기존 CSS ... */
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 1.5em 20px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 1.5em;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #ddd;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 30px;
-}
-
-/* 홈 페이지 스타일 */
-#hero {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #e9ecef;
-    border-radius: 8px;
-}
-
-#hero h1 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-}
-
-#hero p {
-    font-size: 1.1em;
-    color: #666;
-}
-
-#about, #contact {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#about h2, #contact h2, #board h2, #blog h2 {
-    color: #333;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
+#board #search-container {
     margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
 }
 
-/* 게시판 스타일 (카드 형태 목록) */
-#board ul#post-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-#board ul#post-list li {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-}
-
-#board ul#post-list li a {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s ease;
-}
-
-#board ul#post-list li a:hover {
-    background-color: #f0f0f0;
-    border-radius: 5px;
-}
-
-#board button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-#board button:hover {
-    background-color: #0056b3;
-}
-
-#board #post-form {
-    margin-top: 25px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#board #post-form h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-#board #post-form input[type="text"],
-#board #post-form textarea {
-    width: calc(100% - 22px);
+#board #search-container input[type="text"] {
+    flex-grow: 1;
     padding: 10px;
-    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border-radius: 5px;
     font-size: 1em;
 }
 
-#board #post-form button {
-    background-color: #28a745;
+#board #search-container button {
+    background-color: #6c757d;
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
     transition: background-color 0.3s ease;
 }
 
-#board #post-form button:hover {
-    background-color: #1e7e34;
-}
-
-#board #post-form button#cancel-post-btn {
-    background-color: #dc3545;
-}
-
-#board #post-form button#cancel-post-btn:hover {
-    background-color: #c82333;
-}
-
-/* 블로그 스타일 (카드 형태 목록) */
-#blog ul#blog-post-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-#blog ul#blog-post-list li {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-}
-
-#blog ul#blog-post-list li a {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 5px;
-    transition: color 0.3s ease;
-}
-
-#blog ul#blog-post-list li a:hover {
-    color: #007bff;
-}
-
-#blog ul#blog-post-list li span {
-    display: block;
-    color: #777;
-    font-size: 0.9em;
-}
-
-footer {
-    text-align: center;
-    padding: 1.5em 20px;
-    background-color: #333;
-    color: white;
-    position: relative; /* fixed에서 relative로 변경하여 다른 요소와 겹치지 않도록 함 */
-    width: 100%;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+#board #search-container button:hover {
+    background-color: #545b62;
 }
