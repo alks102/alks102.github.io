@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="board.html">게시판</a></li>
+                <li><a href="blog.html">블로그</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="board">
+            <h2>게시판</h2>
+            <ul id="post-list">
+                <li><a href="#">첫 번째 게시글</a></li>
+                <li><a href="#">두 번째 게시글</a></li>
+                <li><a href="#">세 번째 게시글</a></li>
+            </ul>
+            <button id="write-post-btn">글쓰기</button>
+            <div id="post-form" style="display: none;">
+                <h3>새 글 작성</h3>
+                <input type="text" id="post-title" placeholder="제목"><br><br>
+                <textarea id="post-content" placeholder="내용"></textarea><br><br>
+                <button id="submit-post-btn">등록</button>
+                <button id="cancel-post-btn">취소</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 테스트 페이지</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // 간단한 게시글 추가 및 폼 보이기/숨기기 JavaScript
+        const postList = document.getElementById('post-list');
+        const writePostBtn = document.getElementById('write-post-btn');
+        const postForm = document.getElementById('post-form');
+        const submitPostBtn = document.getElementById('submit-post-btn');
+        const cancelPostBtn = document.getElementById('cancel-post-btn');
+        const postTitleInput = document.getElementById('post-title');
+        const postContentInput = document.getElementById('post-content');
+
+        writePostBtn.addEventListener('click', () => {
+            postForm.style.display = 'block';
+        });
+
+        cancelPostBtn.addEventListener('click', () => {
+            postForm.style.display = 'none';
+            postTitleInput.value = '';
+            postContentInput.value = '';
+        });
+
+        submitPostBtn.addEventListener('click', () => {
+            const title = postTitleInput.value.trim();
+            const content = postContentInput.value.trim();
+
+            if (title && content) {
+                const newPost = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = '#'; // 실제 게시글 페이지 링크로 변경해야 합니다.
+                link.textContent = title;
+                newPost.appendChild(link);
+                postList.appendChild(newPost);
+
+                postForm.style.display = 'none';
+                postTitleInput.value = '';
+                postContentInput.value = '';
+            } else {
+                alert('제목과 내용을 모두 입력해주세요.');
+            }
+        });
+    </script>
+</body>
+</html>
