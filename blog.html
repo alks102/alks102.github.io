@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테스트 홈페이지</title>
+    <title>블로그</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,19 +18,12 @@
     </header>
 
     <main>
-        <section id="hero">
-            <h1>홈페이지에 오신 것을 환영합니다.</h1>
-            <p>이곳에서 다양한 소식을 만나보세요.</p>
-        </section>
-
-        <section id="about">
-            <h2>소개</h2>
-            <p>테스트용 홈페이지를 제작하는데 참고한 G</p>
-        </section>
-
-        <section id="contact">
-            <h2>연락처</h2>
-            <p>testtest00122@noway.ac</p>
+        <section id="blog">
+            <h2>블로그</h2>
+            <ul id="blog-post-list">
+                <li><a href="#">첫 번째 블로그 글</a> (2025-05-02)</li>
+                <li><a href="#">두 번째 블로그 글</a> (2025-05-01)</li>
+            </ul>
         </section>
     </main>
 
@@ -39,5 +32,10 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        // 간단한 블로그 글 목록 JavaScript (실제로는 데이터를 가져와 동적으로 생성해야 합니다.)
+        const blogPostList = document.getElementById('blog-post-list');
+        // 추후 실제 블로그 데이터를 가져와서 목록을 생성하는 코드를 추가할 수 있습니다.
+    </script>
 </body>
 </html>
