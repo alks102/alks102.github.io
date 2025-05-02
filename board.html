@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -20,10 +20,14 @@
     <main>
         <section id="board">
             <h2>게시판</h2>
+            <div id="search-container">
+                <input type="text" id="search-input" placeholder="제목 검색">
+                <button id="search-button">검색</button>
+            </div>
             <ul id="post-list">
-                <li><a href="#">첫 번째 게시글</a></li>
-                <li><a href="#">두 번째 게시글</a></li>
-                <li><a href="#">세 번째 게시글</a></li>
+                <li><a href="posts/post1.html">첫 번째 게시글 제목</a></li>
+                <li><a href="posts/post2.html">두 번째 게시글 제목</a></li>
+                <li><a href="#">세 번째 게시글 제목</a></li>
             </ul>
             <button id="write-post-btn">글쓰기</button>
             <div id="post-form" style="display: none;">
@@ -37,19 +41,21 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 테스트 페이지</p>
+        <p>&copy; 2025 나의 홈페이지</p>
     </footer>
 
     <script src="js/script.js"></script>
     <script>
-        // 간단한 게시글 추가 및 폼 보이기/숨기기 JavaScript
         const postList = document.getElementById('post-list');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
         const writePostBtn = document.getElementById('write-post-btn');
         const postForm = document.getElementById('post-form');
         const submitPostBtn = document.getElementById('submit-post-btn');
         const cancelPostBtn = document.getElementById('cancel-post-btn');
         const postTitleInput = document.getElementById('post-title');
         const postContentInput = document.getElementById('post-content');
+        const originalPosts = Array.from(postList.children); // 초기 게시글 목록 저장
 
         writePostBtn.addEventListener('click', () => {
             postForm.style.display = 'block';
@@ -68,17 +74,35 @@
             if (title && content) {
                 const newPost = document.createElement('li');
                 const link = document.createElement('a');
-                link.href = '#'; // 실제 게시글 페이지 링크로 변경해야 합니다.
+                link.href = `posts/temp-post-${Date.now()}.html`; // 임시 파일명
                 link.textContent = title;
                 newPost.appendChild(link);
                 postList.appendChild(newPost);
+                originalPosts.push(newPost); // 검색을 위해 초기 목록에도 추가
 
                 postForm.style.display = 'none';
                 postTitleInput.value = '';
                 postContentInput.value = '';
+                alert('새 글이 작성되었습니다. posts 폴더에 HTML 파일을 생성하고 내용을 채워주세요.');
             } else {
                 alert('제목과 내용을 모두 입력해주세요.');
             }
+        });
+
+        searchButton.addEventListener('click', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            postList.innerHTML = ''; // 기존 목록 비우기
+
+            originalPosts.forEach(post => {
+                const title = post.querySelector('a').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    postList.appendChild(post);
+                }
+            });
+        });
+
+        searchInput.addEventListener('keyup', () => {
+            searchButton.click(); // 입력할 때마다 검색 실행 (선택 사항)
         });
     </script>
 </body>
